@@ -3,7 +3,7 @@ var tabs = require('sdk/tabs');
 var panel = require('sdk/panel');
 
 // Check if unicode is contained in a string
-// Also allows checks for suspicious ASCII characters.
+// Also allows checks for suspicious ASCII characters
 function containsSuspiciousCharacter(str) {
     return (/[^\x1f-\x7f]/g.test(str)) ? true: false;
 }
@@ -34,6 +34,7 @@ function checkTab(tab) {
     }
 }
 
+// Add events to track tabs on open and ready states
 function setupTabTracking() {
     tabs.on('open', function onOpen(tab) {
         checkTab(tab);
