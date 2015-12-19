@@ -12,6 +12,7 @@ exports.containsSuspiciousCharacter = containsSuspiciousCharacter;
 // Check a tab object for a suspicious URL and display warnings
 function checkTab(tab) {
     if (containsSuspiciousCharacter(tab.url)) {
+        console.log("Suspicous URL", tab.url);
         var warningPanel = panel.Panel({
             width: 533,
             height: 200,
