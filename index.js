@@ -1,5 +1,6 @@
 var self = require('sdk/self');
 var tabs = require('sdk/tabs');
+var urls = require('sdk/url');
 var panel = require('sdk/panel');
 
 // Check if unicode is contained in a string
@@ -11,7 +12,8 @@ exports.containsSuspiciousCharacter = containsSuspiciousCharacter;
 
 // Check a tab object for a suspicious URL and display warnings
 function checkTab(tab) {
-    if (containsSuspiciousCharacter(tab.url)) {
+    url = urls.URL(tab.url);
+    if (containsSuspiciousCharacter(url.host)) {
         console.log("Suspicous URL", tab.url);
         var warningPanel = panel.Panel({
             width: 533,
