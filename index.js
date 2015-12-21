@@ -42,10 +42,13 @@ function checkTab(tab) {
 
 // Add events to track tabs on open and ready states
 function setupTabTracking() {
-    tabs.on('open', function onOpen(tab) {
-        checkTab(tab);
+    tabs.on('ready', function onOpen(tab) {
+        // A page was loaded. If it is the active tab, check it now.
+        //   Otherwise, it will be checked upon activation.
+        if (tab == tabs.activeTab)
+            checkTab(tab);
     });
-    tabs.on('ready', function onReady(tab) {
+    tabs.on('activate', function onReady(tab) {
         checkTab(tab);
     });
     
