@@ -18,9 +18,8 @@ function checkTab(tab) {
     var url = urls.URL(tab.url);
     
     if (ignoredDomains.indexOf(url.host) > -1) {
-        console.log("Suspicious URL temporarily ignored:", tab.url);
+        // This domain was already ignored by the user
     } else if (containsSuspiciousCharacter(url.host)) {
-        console.log("Suspicious URL", tab.url);
         var warningPanel = panel.Panel({
             width: 533,
             height: 200,
